@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.function.Function;
@@ -152,9 +154,13 @@ public class Configuration {
     public static Configuration load(String filename) {
         try {
             Properties props = new Properties();
-            props.load(Configuration.class.getResourceAsStream(filename));
+            props.load(Files.newInputStream(Paths.get(filename)));
             return load(props);
         } catch (IOException | NullPointerException e) {
+            if (filename != null) {
+                System.err.println("The file could not be found or read");
+            }
+            e.printStackTrace();
             return load(new Properties());
         }
 

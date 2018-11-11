@@ -141,9 +141,12 @@ public class InstanceGenerator {
                 double CBM = Optional.ofNullable(cmd.getOptionValue("c"))
                         .map(Double::parseDouble)
                         .orElse(conf.getMaxBasePay() + (conf.getMaxBasePay() - conf.getMinBasePay()) * random.nextDouble());
-                double CEM = Optional.ofNullable(cmd.getOptionValue("e"))
-                        .map(Double::parseDouble)
-                        .orElse(conf.getMaxExtraPay() + (conf.getMaxExtraPay() - conf.getMinExtraPay()) * random.nextDouble());
+                double CEM = 0;
+                do {
+                    CEM = Optional.ofNullable(cmd.getOptionValue("e"))
+                            .map(Double::parseDouble)
+                            .orElse(conf.getMaxExtraPay() + (conf.getMaxExtraPay() - conf.getMinExtraPay()) * random.nextDouble());
+                } while (CEM < CBM);
                 Instance instance = Instance.builder()
                         .nServices(nServices)
                         .nBuses(nBuses)
