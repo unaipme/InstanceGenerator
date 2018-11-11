@@ -112,8 +112,6 @@ public class Configuration {
     private int minMaxHours;
     private int maxMaxHours;
 
-    private Properties props;
-
     private Configuration() {}
 
     private static Configuration load(Properties props) {
