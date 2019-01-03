@@ -160,7 +160,6 @@ public class Configuration {
             if (filename != null) {
                 System.err.println("The file could not be found or read");
             }
-            e.printStackTrace();
             return load(new Properties());
         }
 
