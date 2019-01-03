@@ -1,5 +1,7 @@
 # Instance generator
 
+Instance generator created for the AMMM project (UPC) by Unai Perez Mendizabal (unai.perez.mendizabal) and Ferran Torres Morales (ferran.torres.morales).
+
 ## Requirements
 
 To build and run the generator, Java 8 and Maven are required. They can be installed in Ubuntu by running the following command:
@@ -61,4 +63,9 @@ minEurosPerKm= #double
 maxEurosPerKm= #double
 minMaxHours=
 maxMaxHours=
+```
+
+This file can the be used directly with the flag `-f` as in the example command below:
+```bash
+java -jar target/instance-generator.jar -f conf.properties
 ```
